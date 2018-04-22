@@ -15,7 +15,7 @@ def drawGraph(G, longestPath):
     nx.draw_networkx_edge_labels(G, pos, edge_labels=elabels, label_pos=0.3)
     plt.show()
 
-def strToInt(strAdj, tipo):
+def strToInt(strAdj):
     Adj=[]
     for i in range(0, len(strAdj)):
         Adj.append([])
@@ -28,7 +28,7 @@ def adjInput(m):
     strAdj=[]
     for row in rows:
         strAdj.append(row.split(" "))
-    newAdj=strToInt(strAdj, 1)
+    newAdj=strToInt(strAdj)
     Adj=np.matrix(newAdj)
     return Adj
 
@@ -37,7 +37,7 @@ def sparseInput(m, n):
     strAdj=[]
     for row in rows:
         strAdj.append(row.split(" "))
-    newAdj=strToInt(strAdj, 2)
+    newAdj=strToInt(strAdj)
     Adj=[[0]*n for i in range(n)]
     for i in range(len(strAdj[0])):
         Adj[newAdj[0][i]-1][newAdj[1][i]-1]=newAdj[2][i]
@@ -69,5 +69,6 @@ for i in range(0, Adj.shape[0]):
     else: print("-1 ", end=' ')
     if(i==Adj.shape[0]-1): print()
 drawGraph(G, list(path[v]))
+#Ejemplos de como se debe digitar la matriz de adj y la lista de adj:
 #0 10 5 0 0;0 0 2 1 0;0 3 0 9 2;0 0 0 0 4;7 0 0 6 0 matriz
 #1 1 2 2 3 3 3 4 5 5;2 3 3 4 2 4 5 5 1 4;10 5 2 1 3 9 2 4 7 6 lista - 5 nodos   
